@@ -11,29 +11,36 @@
         body { 
             font-family: 'Inter', sans-serif; 
             background-color: #f7f7f7; 
-            overflow-x: hidden; /* Prévient les barres de défilement dues aux transformations */
+            overflow-x: hidden;
         }
         h1, h2 { font-family: 'Playfair Display', serif; }
         
+        /* COULEURS */
+        :root {
+            --color-primary: #1e3a8a; /* Indigo foncé (Rigueur/Droit) */
+            --color-accent: #fbbf24;  /* Jaune or (Énergie/Rythme) */
+            --color-contrast: #4f46e5; /* Indigo plus clair */
+        }
+        
         /* 1. Section Héro - Fond dynamique */
         .hero-section {
-            background: linear-gradient(135deg, #1e3a8a 0%, #000000 100%); /* Indigo foncé au Noir */
+            background: linear-gradient(135deg, var(--color-primary) 0%, #000000 100%);
             color: white;
             padding: 8rem 0;
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
         }
         
-        /* 2. Bouton d'action (Premium/3D) */
+        /* 2. Bouton d'action (3D / Rock) */
         .paia-button {
-            background-color: #fbbf24; /* Jaune or */
-            color: #1f2937; /* Gris foncé */
-            box-shadow: 0 15px 35px -5px rgba(251, 191, 36, 0.7); /* Ombre très profonde pour l'effet 3D */
+            background-color: var(--color-accent);
+            color: var(--color-primary);
+            box-shadow: 0 15px 35px -5px rgba(251, 191, 36, 0.7);
             transition: all 0.3s;
-            transform: skewX(-5deg); /* Effet "rock/dynamique" */
+            transform: skewX(-5deg); /* Effet Rock */
             border: 3px solid #f59e0b;
         }
         .paia-button-text {
-             transform: skewX(5deg); /* Compense le skew du conteneur */
+             transform: skewX(5deg);
              display: inline-block;
         }
         .paia-button:hover {
@@ -41,41 +48,48 @@
             transform: translateY(-4px) skewX(-5deg);
         }
         
-        /* 3. Cartes Premium (Effet de décalage 3D) */
+        /* 3. Cartes (Effet de décalage 3D - Pro) */
         .premium-card {
             position: relative;
             background-color: white;
             border-radius: 1rem;
             padding: 2rem;
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2); /* Ombre de décalage */
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease-in-out;
-            border-bottom: 5px solid #1e3a8a;
+            border-bottom: 5px solid var(--color-contrast);
         }
         .premium-card:hover {
-            transform: translateY(-10px); /* Souligne l'effet 3D */
+            transform: translateY(-10px);
         }
 
-        /* 4. Modal de connexion/inscription */
+        /* 4. Modal (Arrière-plan sombre et centrage) */
         .modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: none; /* Caché par défaut */
+            background-color: rgba(0, 0, 0, 0.85); /* Plus sombre */
+            display: none;
             justify-content: center;
             align-items: center;
             z-index: 1000;
+            backdrop-filter: blur(5px); /* Effet visuel moderne */
         }
         .modal-content {
             background-color: white;
-            padding: 3rem;
+            padding: 2rem;
             border-radius: 1rem;
-            box-shadow: 0 10px 40px rgba(251, 191, 36, 0.5);
+            box-shadow: 0 15px 40px -5px rgba(0, 0, 0, 0.5); 
             max-width: 90%;
             width: 450px;
-            border: 5px solid #1e3a8a;
+            border: 5px solid var(--color-accent); /* Bordure en couleur accentuée */
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
         }
     </style>
 </head>
@@ -90,45 +104,45 @@
     <section class="hero-section">
         <div class="max-w-6xl mx-auto px-6 text-center">
             <p class="text-lg font-black tracking-widest uppercase mb-4 text-yellow-400">Mathilde Martine Paisley vous emmène dans l'ère</p>
-            <h1 class="text-8xl font-black mb-4 animate-pulse uppercase tracking-widest" style="color: #fbbf24;">PAÏA 👑</h1>
+            <h1 class="text-8xl font-black mb-4 uppercase tracking-widest" style="color: var(--color-accent);">PAÏA 👑</h1>
             <h2 class="text-3xl font-light mb-8 italic text-gray-300">L'Excellence de la Paie : L'Ancien Droit. Le Nouveau Flow.</h2>
             
             <p class="max-w-4xl mx-auto text-xl font-light mb-12">
-                "Ma mission est de rendre le Droit Social et la Paie accessibles à tous. Chez PAÏA, l'expertise est notre signature. Nous fusionnons la rigueur légale avec une pédagogie rythmée et **ultra-détaillée**, vous garantissant une montée en compétence sans précédent."
+                "Ma mission est de rendre le Droit Social et la Paie accessibles à tous. Chez PAÏA, l'expertise est notre signature. Nous fusionnons la rigueur légale avec une pédagogie rythmée et **ultra-détaillée**, garantissant votre montée en compétence sans précédent."
             </p>
             
-            <button onclick="openInscriptionModal()" class="paia-button inline-flex items-center text-2xl font-extrabold py-5 px-10 rounded-full uppercase">
-                <span class="paia-button-text">Démarrer mon Accès GRATUIT →</span>
+            <button onclick="openInscriptionModal(true)" class="paia-button inline-flex items-center text-2xl font-extrabold py-5 px-10 rounded-full uppercase">
+                <span class="paia-button-text">Accès Immédiat à la Plateforme →</span>
             </button>
-            <p class="text-sm font-medium mt-4 text-gray-400">Inscription rapide pour un accès immédiat à la plateforme complète.</p>
+            <p class="text-sm font-medium mt-4 text-gray-400">Découvrez les 150+ micro-sujets. Inscription rapide et gratuite.</p>
         </div>
     </section>
 
-    <!-- Section Présentation Premium (Design 3D) -->
+    <!-- Section Présentation (Design 3D) -->
     <section id="plateforme" class="py-20 bg-gray-100">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-5xl font-extrabold premium-text text-center mb-16 tracking-tight">Notre Signature : Le Micro-Learning d'Excellence.</h2>
+            <h2 class="text-5xl font-extrabold text-gray-900 text-center mb-16 tracking-tight">Notre Signature : Le Micro-Learning d'Excellence.</h2>
             
             <div class="grid md:grid-cols-3 gap-12">
                 <div class="premium-card">
                     <p class="text-6xl mb-4 text-indigo-600">🧠</p>
-                    <h3 class="text-2xl font-black mb-3 premium-text">Pédagogie de Rupture</h3>
-                    <p class="text-gray-600">Chaque concept est une **micro-étape**. Fini les vidéos de 10 minutes ! Nous décomposons la paie en capsules de savoir ultra-fines pour une mémorisation parfaite.</p>
+                    <h3 class="text-2xl font-black mb-3 text-gray-900">Pédagogie de Rupture</h3>
+                    <p class="text-gray-600">Chaque concept est décomposé en **micro-étapes** de 2 minutes max. Adoptez le rythme du flow pour une mémorisation parfaite et durable.</p>
                 </div>
                 <div class="premium-card">
                     <p class="text-6xl mb-4 text-indigo-600">🔒</p>
-                    <h3 class="text-2xl font-black mb-3 premium-text">Intégrité du Contenu</h3>
-                    <p class="text-gray-600">Nos fiches techniques et vidéos sont en lecture seule/streaming sécurisé. Votre savoir reste unique et **ne peut être copié ou téléchargé**.</p>
+                    <h3 class="text-2xl font-black mb-3 text-gray-900">Intégrité du Contenu</h3>
+                    <p class="text-gray-600">Nos ressources sont en **lecture seule/streaming sécurisé**. L'excellence de notre savoir est protégée, non copiable, non téléchargeable.</p>
                 </div>
                 <div class="premium-card">
                     <p class="text-6xl mb-4 text-indigo-600">⚡</p>
-                    <h3 class="text-2xl font-black mb-3 premium-text">Le Flux "Future Proof"</h3>
-                    <p class="text-gray-600">Connectivité en temps réel à notre base de données. Dès qu'une loi change, PAÏA est à jour. **Zéro obsolescence légale.**</p>
+                    <h3 class="text-2xl font-black mb-3 text-gray-900">Le Flux Temps Réel</h3>
+                    <p class="text-gray-600">Connectivité constante. Dès qu'une loi change ou qu'un calcul évolue, PAÏA est mis à jour. **Zéro obsolescence légale.**</p>
                 </div>
             </div>
             
             <div class="text-center mt-16">
-                 <button onclick="openInscriptionModal()" class="paia-button inline-flex items-center text-2xl font-extrabold py-5 px-10 rounded-full uppercase">
+                 <button onclick="openInscriptionModal(true)" class="paia-button inline-flex items-center text-2xl font-extrabold py-5 px-10 rounded-full uppercase">
                     <span class="paia-button-text">Accès Immédiat à la Plateforme →</span>
                  </button>
             </div>
@@ -136,73 +150,140 @@
     </section>
     
     <!-- MODAL D'INSCRIPTION / CONNEXION -->
-    <div id="inscriptionModal" class="modal">
+    <div id="authModal" class="modal">
         <div class="modal-content">
-            <h3 class="text-3xl font-extrabold text-gray-900 mb-6 text-center">Rejoindre PAÏA 👑</h3>
-            <p class="text-center text-gray-600 mb-6">Créez votre compte pour accéder gratuitement aux 150+ micro-sujets.</p>
+            <h3 id="modalTitle" class="text-3xl font-extrabold text-gray-900 mb-6 text-center"></h3>
             
-            <form id="inscriptionForm" onsubmit="handleInscription(event)">
+            <!-- Formulaire d'Inscription -->
+            <form id="inscriptionForm" class="space-y-4">
+                <p class="text-center text-gray-600 mb-6">Créez votre compte gratuit pour commencer votre formation.</p>
                 <div class="mb-4">
-                    <label for="modal-name" class="block text-sm font-medium text-gray-700">Nom / Entreprise (pour le diplôme)</label>
-                    <input type="text" id="modal-name" name="name" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                    <label for="modal-name" class="block text-sm font-medium text-gray-700">Nom / Entreprise (pour la certification)</label>
+                    <input type="text" id="modal-name" name="name" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:border-indigo-500 focus:ring-indigo-500">
                 </div>
                 <div class="mb-4">
                     <label for="modal-email" class="block text-sm font-medium text-gray-700">Email professionnel</label>
-                    <input type="email" id="modal-email" name="email" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                    <input type="email" id="modal-email" name="email" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:border-indigo-500 focus:ring-indigo-500">
                 </div>
                 <div class="mb-6">
                     <label for="modal-password" class="block text-sm font-medium text-gray-700">Mot de passe</label>
-                    <input type="password" id="modal-password" name="password" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                    <input type="password" id="modal-password" name="password" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:border-indigo-500 focus:ring-indigo-500">
                 </div>
                 
-                <button type="submit" class="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md transition duration-200">
-                    S'inscrire et Accéder à la Plateforme
+                <button type="submit" class="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-lg shadow-xl transition duration-200">
+                    S'inscrire et Accéder à PAÏA
                 </button>
+                 <button type="button" onclick="toggleModalView(false)" class="w-full mt-3 py-2 text-sm text-indigo-600 hover:text-indigo-800 font-medium">
+                     J'ai déjà un compte (Me connecter)
+                 </button>
             </form>
-             <button onclick="closeInscriptionModal()" class="w-full mt-3 py-2 text-sm text-gray-500 hover:text-gray-700">
-                 Non, merci (Fermer)
+            
+            <!-- Formulaire de Connexion -->
+            <form id="loginForm" class="space-y-4 hidden">
+                 <p class="text-center text-gray-600 mb-6">Heureux de vous revoir ! Connectez-vous.</p>
+                 <div class="mb-4">
+                    <label for="modal-login-email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" id="modal-login-email" name="email" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:border-indigo-500 focus:ring-indigo-500">
+                </div>
+                <div class="mb-6">
+                    <label for="modal-login-password" class="block text-sm font-medium text-gray-700">Mot de passe</label>
+                    <input type="password" id="modal-login-password" name="password" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:border-indigo-500 focus:ring-indigo-500">
+                </div>
+
+                 <button type="submit" class="w-full py-3 px-4 bg-yellow-600 hover:bg-yellow-700 text-gray-900 font-black rounded-lg shadow-xl transition duration-200">
+                    Connexion & Accès
+                </button>
+                 <button type="button" onclick="toggleModalView(true)" class="w-full mt-3 py-2 text-sm text-indigo-600 hover:text-indigo-800 font-medium">
+                     Pas encore inscrit ? (Créer mon compte)
+                 </button>
+            </form>
+             
+             <button onclick="closeAuthModal()" class="w-full mt-6 py-2 text-sm text-gray-500 hover:text-gray-700">
+                 Non, merci (Fermer la boîte de dialogue)
              </button>
         </div>
     </div>
     
     <!-- Pied de page -->
     <footer class="text-center py-6 text-sm text-gray-500 bg-gray-100 border-t-2 border-gray-300">
-        <p>Projet PAÏA - Mathilde Martine Paisley | Tous droits réservés.</p>
+        <p class="mb-1">Projet PAÏA - Mathilde Martine Paisley | Tous droits réservés.</p>
+        <!-- Lien de test ajouté à la demande de l'utilisateur -->
+        <p>Lien de test : <a href="https://projettechacademy.github.io/Test_Page-d-introduction-PAIA-Vlog-Story-/" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-semibold underline">Lien PAÏA</a></p>
     </footer>
 
     <script>
-        function openInscriptionModal() {
-            document.getElementById('inscriptionModal').style.display = 'flex';
+        const modal = document.getElementById('authModal');
+        const inscriptionForm = document.getElementById('inscriptionForm');
+        const loginForm = document.getElementById('loginForm');
+        const modalTitle = document.getElementById('modalTitle');
+        let isRegisterView = true;
+
+        function openInscriptionModal(isRegisterMode = true) {
+            modal.style.display = 'flex';
+            toggleModalView(isRegisterMode);
         }
 
-        function closeInscriptionModal() {
-            document.getElementById('inscriptionModal').style.display = 'none';
+        function closeAuthModal() {
+            modal.style.display = 'none';
+        }
+        
+        // Fonction pour basculer entre Inscription et Connexion
+        function toggleModalView(toRegister) {
+            isRegisterView = toRegister;
+            if (isRegisterView) {
+                modalTitle.textContent = "Créer mon Accès PAÏA 👑";
+                inscriptionForm.classList.remove('hidden');
+                loginForm.classList.add('hidden');
+            } else {
+                modalTitle.textContent = "Connexion à PAÏA";
+                inscriptionForm.classList.add('hidden');
+                loginForm.classList.remove('hidden');
+            }
         }
 
-        function handleInscription(event) {
+        function handleAuth(event) {
             event.preventDefault();
-            // --- LOGIQUE DE CONNEXION SIMULÉE ---
-            const email = document.getElementById('modal-email').value;
-            const name = document.getElementById('modal-name').value;
             
-            console.log("Tentative d'inscription pour : " + name + " / " + email);
+            let actionType = isRegisterView ? "Inscription" : "Connexion";
+            let email, name, password;
 
-            // Redirection vers l'application React après l'inscription simulée.
-            // EN PRODUCTION, CE CODE REDIRIGERAIT VERS VOTRE APPLICATION REACT/FIREBASE.
-            alert("Inscription simulée réussie ! Redirection vers la plateforme PAÏA.");
+            if (isRegisterView) {
+                email = document.getElementById('modal-email').value;
+                name = document.getElementById('modal-name').value;
+                password = document.getElementById('modal-password').value;
+            } else {
+                email = document.getElementById('modal-login-email').value;
+                password = document.getElementById('modal-login-password').value;
+            }
+            
+            // --- LOGIQUE DE CONNEXION/INSCRIPTION SIMULÉE ---
+            console.log(actionType + " simulée pour : " + email);
+
+            // Redirection vers l'application React après l'authentification simulée.
+            // EN PRODUCTION, CE CODE SERAIT REMPLACÉ PAR LES APPELS FIREBASE AUTH ET REDIRECTION VERS L'APPLICATION REACT.
+            // NOTE: L'ALERTE EST UTILISÉE ICI UNIQUEMENT POUR SIMULER LA REDIRECTION DANS CET ENVIRONNEMENT DE TEST.
+            alert(`${actionType} réussie ! Redirection vers la plateforme PAÏA.`);
             window.location.href = "URL_DE_L_APPLICATION_REACT_PRINCIPALE"; // Remplacer par l'URL réelle
             // ------------------------------------
             
-            closeInscriptionModal();
+            closeAuthModal();
         }
+        
+        // Attacher l'écouteur d'événement aux deux formulaires
+        inscriptionForm.onsubmit = handleAuth;
+        loginForm.onsubmit = handleAuth;
         
         // Permet de fermer le modal en cliquant en dehors
         window.onclick = function(event) {
-            const modal = document.getElementById('inscriptionModal');
             if (event.target == modal) {
-                closeInscriptionModal();
+                closeAuthModal();
             }
         }
+        
+        // Initialiser la vue par défaut (Inscription)
+        document.addEventListener('DOMContentLoaded', () => {
+            toggleModalView(true);
+        });
     </script>
 </body>
 </html>
