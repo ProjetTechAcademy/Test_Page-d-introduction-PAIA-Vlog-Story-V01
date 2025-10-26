@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathilde Martine Paisley - PAÏA 👑 | Portail de Vulgarisation de la Paie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts pour le côté Passé/Futur -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Styles de base pour l'ambiance */
+        body { font-family: 'Inter', sans-serif; background-color: #f7f7f7; }
+        h1, h2 { font-family: 'Playfair Display', serif; }
+        .hero-section {
+            /* Couleurs profondes et riches : Indigo pour le droit, Noir pour le sérieux, Jaune pour l'énergie */
+            background: linear-gradient(135deg, #1e3a8a 0%, #000000 100%); 
+            color: white;
+            padding: 8rem 0;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        .paia-button {
+            background-color: #fbbf24; /* Jaune or */
+            color: #1f2937; /* Gris foncé */
+            box-shadow: 0 8px 20px -5px rgba(251, 191, 36, 0.5); /* Ombre premium */
+            transition: all 0.3s;
+        }
+        .paia-button:hover {
+            background-color: #f59e0b;
+            transform: translateY(-4px);
+        }
+        .premium-card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-top: 5px solid #1e3a8a;
+        }
+        .premium-text {
+             color: #1e3a8a; /* Indigo foncé */
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Zone d'Ambiance Musicale (Simulation) -->
+    <!-- En réalité, utiliser Tone.js ou un lecteur sécurisé pour le mix Rock/Disco/Afro-Caribéen -->
+    <div class="fixed top-2 right-2 p-2 bg-gray-900 text-white rounded-full text-xs opacity-75">
+        🎧 Ambiance PAÏA (Activer le son)
+    </div>
+
+    <!-- Section Héro / Histoire PREMIUM -->
+    <section class="hero-section">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="text-lg font-black tracking-widest uppercase mb-4 text-yellow-400">Mathilde Martine Paisley présente l'ère</p>
+            <h1 class="text-8xl font-black mb-4 animate-pulse uppercase tracking-widest" style="color: #fbbf24;">PAÏA 👑</h1>
+            <h2 class="text-3xl font-light mb-8 italic text-gray-300">Le Savoir de la Paie : du Code (Passé) au Flow (Futur).</h2>
+            
+            <p class="max-w-4xl mx-auto text-xl font-light mb-12">
+                "Passionnée de paie et de droit social, j'ai créé PAÏA pour briser le mur de complexité. Ma méthode fusionne la rigueur du droit social à l'accessibilité du rythme, inspiré par mes racines. Ici, l'apprentissage est **Premium, sécurisé et garanti à jour**, loin des documents administratifs figés."
+            </p>
+            
+            <a href="URL_DE_L_APPLICATION_REACT" class="paia-button inline-flex items-center text-2xl font-extrabold py-5 px-10 rounded-full uppercase">
+                Accès GRATUIT & Inscription à la Plateforme Sécurisée →
+            </a>
+            <p class="text-sm font-medium mt-4 text-gray-400">Votre accès est gratuit pendant la phase de lancement.</p>
+        </div>
+    </section>
+
+    <!-- Section Présentation Premium -->
+    <section id="plateforme" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-5xl font-extrabold premium-text text-center mb-12">Ce qui rend PAÏA VRAIMENT Premium.</h2>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="premium-card">
+                    <p class="text-5xl mb-4 text-indigo-600">🛡️</p>
+                    <h3 class="text-2xl font-black mb-3 premium-text">Savoir Protégé & Intègre</h3>
+                    <p class="text-gray-600">Fiches techniques, vidéos et audio sont en **lecture seule/streaming sécurisé**. Zéro possibilité de télécharger ou copier/coller pour garantir l'intégrité de votre apprentissage.</p>
+                </div>
+                <div class="premium-card">
+                    <p class="text-5xl mb-4 text-indigo-600">🧩</p>
+                    <h3 class="text-2xl font-black mb-3 premium-text">Micro-Learning Rhythmé</h3>
+                    <p class="text-gray-600">Chaque concept complexe est décomposé en **micro-étapes** de 2 minutes max. Une pédagogie unique pour une montée en compétence rapide et durable.</p>
+                </div>
+                <div class="premium-card">
+                    <p class="text-5xl mb-4 text-indigo-600">🔄</p>
+                    <h3 class="text-2xl font-black mb-3 premium-text">Actualisation Instantanée</h3>
+                    <p class="text-gray-600">Connecté en temps réel à la base de données. Quand la loi change, le contenu change instantanément. **Zéro retard légal.**</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                 <a href="URL_DE_L_APPLICATION_REACT" class="paia-button inline-flex items-center text-2xl font-extrabold py-5 px-10 rounded-full uppercase">
+                    Accès GRATUIT & Inscription (Phase de Lancement)
+                 </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pied de page -->
+    <footer class="text-center py-6 text-sm text-gray-500 bg-gray-100 border-t-2 border-gray-300">
+        <p>Projet PAÏA - Mathilde Martine Paisley | Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
